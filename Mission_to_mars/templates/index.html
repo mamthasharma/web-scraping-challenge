@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title> Mission to Mars </title>
+</head>
+
+<body class="text-black" style="background-color:white;">
+    <div class="container">
+        <div class="jumbotron text-center" style="background-image: url(https://www.fromspacewithlove.com/wp-content/uploads/2018/08/planet-mars-img-768x225.png)">
+            <h1>Mission to Mars</h1>
+            <a class="btn btn-primary" href="/scrape" role="button">Scrape New Data</a>
+        </div>
+    </div>  
+<div class=container>
+    <div class=row>
+        <div class="col-md-12">
+            <h2>Latest Mars News</h2>
+            <h3>{{mars.marsnewstitle}}</h3>
+            <p>{{mars.marsnewspara}}</p>
+        </div>
+    </div>
+    <div class=row>
+        <div class="col-md-8">
+            <h2>Featured Mars Image</h2>
+            <img src={{featured_image_url}} class="img-fluid" atl="Featured Image Mars">
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card_body">
+                    <h3 class="card-title">Current Weather on Mars</h3>
+                    <p class="card-text">{{mars.marsweather}}</p>
+                </div>
+            </div>
+            <div class=mars_facts>
+                <h3>Mars Facts</h3>
+                {{mars.marstable}}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Mars Hemisphere</h2>
+        </div>
+    </div>
+    <div class="row">
+        {%for hemisphere in mars.img_urls %}
+        <div class="col-md-6">
+            <div class="card">
+                <img class="card-img-top" src={{hemisphere.img_url}} atl={{hemisphere.title}}>
+                <div class="card-body">
+                    <p class="card-text font-weight-bold">{{hemisphere.title}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
